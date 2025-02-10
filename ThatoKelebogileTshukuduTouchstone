@@ -1,0 +1,58 @@
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.DayOfWeek;
+
+public class App {
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ask for student number
+        System.out.println("Enter your student number: ");
+        String studentNumber = scanner.nextLine();
+
+        // Display options for Exams or Assignments
+        System.out.println("Enter 'E' for Exams or 'A' for Assignments: ");
+        char taskType = scanner.nextLine().toUpperCase().charAt(0);
+
+        // Display the task status based on the input
+        if (taskType == 'E') {
+            System.out.println("You have exams on Thursday.");
+            checkExamStatus();
+        } else if (taskType == 'A') {
+            System.out.println("You have assignments due on Monday.");
+            checkAssignmentStatus();
+        } else {
+            System.out.println("Invalid input. Please enter either 'E' for Exams or 'A' for Assignments.");
+        }
+        
+        scanner.close();
+    }
+
+    // Method to check if it's time for exams (Thursday)
+    public static void checkExamStatus() {
+        // Get the current day of the week
+        DayOfWeek today = LocalDate.now().getDayOfWeek();
+        
+        // Check if today is Thursday
+        if (today == DayOfWeek.THURSDAY) {
+            System.out.println("Today is Thursday. It's time to prepare for your exam.");
+        } else {
+            System.out.println("Today is not Thursday. Prepare for your exam later in the week.");
+        }
+    }
+
+    // Method to check if it's time to submit assignments (Monday)
+    public static void checkAssignmentStatus() {
+        // Get the current day of the week
+        DayOfWeek today = LocalDate.now().getDayOfWeek();
+        
+        // Check if today is Monday
+        if (today == DayOfWeek.MONDAY) {
+            System.out.println("Today is Monday. Your assignment is due today.");
+        } else {
+            System.out.println("Today is not Monday. You have some time to work on your assignment.");
+        }
+    }
+}
